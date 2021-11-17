@@ -1,0 +1,25 @@
+mixin form(engraving = {})
+  .card.stacked-form
+    .card-header
+      h4.card-title Создание записи
+    .card-body
+      form(method='POST', action=`/engraving/add/${engraving._id ? engraving._id : ''}` enctype='multipart/form-data')
+        input(type='hidden' name='type' value='engraving')
+        .form-group
+          label Заголовк
+          input.form-control(type='text', name='desc' value=engraving.desc placeholder='Заголовк')
+        .form-group
+          label Фото
+          br
+          if !engraving._id
+            input#photoUpload(type='file', name='photo' required)
+            img#uploadedImg(style='display: none;')
+          else
+            label Загрузить новое фото
+            input#photoUpload(type='file', name='photo')
+            br
+            br
+            img#uploadedImg(src=`/uploads/engraving/${engraving.photo}` style="width: 20%;")
+        button.btn.btn-fill.btn-info(type='submit')
+          | #{engraving._id ? 'Редактировать' : 'Создать'}
+          i.fa.fa-check

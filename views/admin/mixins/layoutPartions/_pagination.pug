@@ -1,0 +1,34 @@
+//- Pagination mixin, accept 3 arguments:
+//- 1. Current page
+//- 2. Total number of pages
+//- 3. Total number of incoming documents
+mixin pagination(origin, page, pages, count, search)
+  ul.pagination.col-md-12
+    - let tmp = ''
+    if search
+      - const str = search.split('?')
+      - tmp = str[str.length - 1]
+    else
+      - tmp = ''
+    //- Create array with page numbers for anchors
+    - const arr = new Array(pages)
+    //- if current page greater then 1, keep prev button active
+    //- otherwise disable it
+    if page > 1
+      li.page-item
+        a.page-link(href=`/${origin}/page/${page - 1}?${search ? tmp : ''}`)  «
+    else 
+      li.page-item
+        a.page-link  «
+    //- create list of pagination anchors
+    each page, index in arr
+      li.page-item(class=`${parseInt(currentPath.split('/').pop()) === (index + 1) ? 'active' : ''}`)
+        a.page-link(href=`/${origin}/page/${index + 1}?${search ? tmp : ''}`) #{index + 1}
+    //- if current page less then pages count, keep next button active
+    //- otherwise disable it
+    if page < pages
+      li.page-item
+        a.page-link(href=`/${origin}/page/${parseFloat(page) + 1}?${search ? tmp : ''}`) »
+    else 
+      li.page-item
+        a.page-link »

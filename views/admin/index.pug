@@ -1,0 +1,279 @@
+extends layout
+
+block content
+	.content
+		.container-fluid
+			.row
+				.col-lg-3.col-sm-6
+					.card.card-stats
+						.card-body
+							.row
+								.col-5
+									.icon-big.text-center.icon-warning
+										i.nc-icon.nc-chart.text-warning
+								.col-7
+									.numbers
+										p.card-category Пользователи
+										h4.card-title #{users}
+						//- .card-footer
+							hr
+							.stats
+								i.fa.fa-refresh
+								|  Update Now
+				.col-lg-3.col-sm-6
+					.card.card-stats
+						.card-body
+							.row
+								.col-5
+									.icon-big.text-center.icon-warning
+										i.nc-icon.nc-light-3.text-success
+								.col-7
+									.numbers
+										p.card-category Кол-во товаров
+										h4.card-title #{products}
+						//- .card-footer
+							hr
+							.stats
+								i.fa.fa-calendar-o
+								|  Last day
+				.col-lg-3.col-sm-6
+					.card.card-stats
+						.card-body
+							.row
+								.col-5
+									.icon-big.text-center.icon-warning
+										i.nc-icon.nc-vector.text-danger
+								.col-7
+									.numbers
+										p.card-category Кол-во заказов
+										h4.card-title #{orders}
+						//- .card-footer
+							hr
+							.stats
+								i.fa.fa-clock-o
+								|  In the last hour
+				//- .col-lg-3.col-sm-6
+					.card.card-stats
+						.card-body
+							.row
+								.col-5
+									.icon-big.text-center.icon-warning
+										i.nc-icon.nc-favourite-28.text-primary
+								.col-7
+									.numbers
+										p.card-category Followers
+										h4.card-title +45K
+						.card-footer
+							hr
+							.stats
+								i.fa.fa-refresh
+								|  Update now
+			//- .row
+				.col-md-12
+					.card
+						.card-header
+							h4.card-title Global Sales by Top Locations
+							p.card-category All products that were shipped
+						.card-body
+							.row
+								.col-md-6
+									.table-responsive
+										table.table
+											tbody
+												tr
+													td
+														.flag
+															img(src='/img/flags/US.png', <='', div='')
+													td USA
+													td.text-right 2.920
+													td.text-right 53.23%
+												tr
+													td
+														.flag
+															img(src='/img/flags/DE.png', <='', div='')
+													td Germany
+													td.text-right 1.300
+													td.text-right 20.43%
+												tr
+													td
+														.flag
+															img(src='/img/flags/AU.png', <='', div='')
+													td Australia
+													td.text-right 760
+													td.text-right 10.35%
+												tr
+													td
+														.flag
+															img(src='/img/flags/GB.png', <='', div='')
+													td United Kingdom
+													td.text-right 690
+													td.text-right 7.87%
+												tr
+													td
+														.flag
+															img(src='/img/flags/RO.png', <='', div='')
+													td Romania
+													td.text-right 600
+													td.text-right 5.94%
+												tr
+													td
+														.flag
+															img(src='/img/flags/BR.png', <='', div='')
+													td Brasil
+													td.text-right 550
+													td.text-right 4.34%
+								.col-md-6.ml-auto.mr-auto
+									#worldMap(style='height: 300px;')
+			//- .row
+				.col-md-4
+					.card
+						.card-header
+							h4.card-title Email Statistics
+							p.card-category Last Campaign Performance
+						.card-body
+							#chartEmail.ct-chart.ct-perfect-fourth
+						.card-footer
+							.legend
+								i.fa.fa-circle.text-info
+								|  Open
+								i.fa.fa-circle.text-danger
+								|  Bounce
+								i.fa.fa-circle.text-warning
+								|  Unsubscribe
+							hr
+							.stats
+								i.fa.fa-clock-o
+								|  Campaign sent 2 days ago
+				.col-md-8
+					.card
+						.card-header
+							h4.card-title Users Behavior
+							p.card-category 24 Hours performance
+						.card-body
+							#chartHours.ct-chart
+						.card-footer
+							.legend
+								i.fa.fa-circle.text-info
+								|  Open
+								i.fa.fa-circle.text-danger
+								|  Click
+								i.fa.fa-circle.text-warning
+								|  Click Second Time
+							hr
+							.stats
+								i.fa.fa-history
+								|  Updated 3 minutes ago
+			//- .row
+				.col-md-6
+					.card
+						.card-header
+							h4.card-title 2017 Sales
+							p.card-category All products including Taxes
+						.card-body
+							#chartActivity.ct-chart
+						.card-footer
+							.legend
+								i.fa.fa-circle.text-info
+								|  Tesla Model S
+								i.fa.fa-circle.text-danger
+								|  BMW 5 Series
+							hr
+							.stats
+								i.fa.fa-check
+								|  Data information certified
+				.col-md-6
+					.card.card-tasks
+						.card-header
+							h4.card-title Tasks
+							p.card-category Backend development
+						.card-body
+							.table-full-width
+								table.table
+									tbody
+										tr
+											td
+												.form-check
+													label.form-check-label
+														input.form-check-input(type='checkbox', value='')
+														span.form-check-sign
+											td Sign contract for "What are conference organizers afraid of?"
+											td.td-actions.text-right
+												button.btn.btn-info.btn-simple.btn-link(type='button', rel='tooltip', title='Edit Task')
+													i.fa.fa-edit
+												button.btn.btn-danger.btn-simple.btn-link(type='button', rel='tooltip', title='Remove')
+													i.fa.fa-times
+										tr
+											td
+												.form-check
+													label.form-check-label
+														input.form-check-input(type='checkbox', value='', checked='')
+														span.form-check-sign
+											td Lines From Great Russian Literature? Or E-mails From My Boss?
+											td.td-actions.text-right
+												button.btn.btn-info.btn-simple.btn-link(type='button', rel='tooltip', title='Edit Task')
+													i.fa.fa-edit
+												button.btn.btn-danger.btn-simple.btn-link(type='button', rel='tooltip', title='Remove')
+													i.fa.fa-times
+										tr
+											td
+												.form-check
+													label.form-check-label
+														input.form-check-input(type='checkbox', value='', checked='')
+														span.form-check-sign
+											td
+												| Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+											td.td-actions.text-right
+												button.btn.btn-info.btn-simple.btn-link(type='button', rel='tooltip', title='Edit Task')
+													i.fa.fa-edit
+												button.btn.btn-danger.btn-simple.btn-link(type='button', rel='tooltip', title='Remove')
+													i.fa.fa-times
+										tr
+											td
+												.form-check
+													label.form-check-label
+														input.form-check-input(type='checkbox', checked='')
+														span.form-check-sign
+											td Create 4 Invisible User Experiences you Never Knew About
+											td.td-actions.text-right
+												button.btn.btn-info.btn-simple.btn-link(type='button', rel='tooltip', title='Edit Task')
+													i.fa.fa-edit
+												button.btn.btn-danger.btn-simple.btn-link(type='button', rel='tooltip', title='Remove')
+													i.fa.fa-times
+										tr
+											td
+												.form-check
+													label.form-check-label
+														input.form-check-input(type='checkbox', value='')
+														span.form-check-sign
+											td Read "Following makes Medium better"
+											td.td-actions.text-right
+												button.btn.btn-info.btn-simple.btn-link(type='button', rel='tooltip', title='Edit Task')
+													i.fa.fa-edit
+												button.btn.btn-danger.btn-simple.btn-link(type='button', rel='tooltip', title='Remove')
+													i.fa.fa-times
+										tr
+											td
+												.form-check
+													label.form-check-label
+														input.form-check-input(type='checkbox', value='', checked='')
+														span.form-check-sign
+											td Unfollow 5 enemies from twitter
+											td.td-actions.text-right
+												button.btn.btn-info.btn-simple.btn-link(type='button', rel='tooltip', title='Edit Task')
+													i.fa.fa-edit
+												button.btn.btn-danger.btn-simple.btn-link(type='button', rel='tooltip', title='Remove')
+													i.fa.fa-times
+						.card-footer
+							hr
+							.stats
+								i.now-ui-icons.loader_refresh.spin
+								|  Updated 3 minutes ago
+
+block userScripts
+	//- script(type='text/javascript').
+		$(document).ready(function() {
+			// Javascript method's body can be found in assets/js/demos.js
+			demo.initDashboardPageCharts();
+			//- demo.showNotification();
+			demo.initVectorMap();
+		});

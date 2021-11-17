@@ -1,0 +1,68 @@
+mixin fixed-sidebar()
+  .fixed-plugin
+    .dropdown.show-dropdown
+      a(href='#', data-toggle='dropdown')
+        i.fa.fa-cog.fa-2x  
+      ul.dropdown-menu
+        li.header-title  Sidebar Style
+        li.adjustments-line
+          a.switch-trigger(href='javascript:void(0)')
+            p Background Image
+            label.switch-image
+              input(type='checkbox', data-toggle='switch', data-on-color='info', data-off-color='info')
+              span.toggle
+            .clearfix
+        li.adjustments-line
+          a.switch-trigger(href='javascript:void(0)')
+            p Sidebar Mini
+            label.switch-mini
+              input(type='checkbox', data-toggle='switch', data-on-color='info', data-off-color='info')
+              span.toggle
+            .clearfix
+        li.adjustments-line
+          a.switch-trigger(href='javascript:void(0)')
+            p Fixed Navbar
+            label.switch-nav
+              input(type='checkbox', data-toggle='switch', data-on-color='info', data-off-color='info')
+              span.toggle
+            .clearfix
+        li.adjustments-line
+          a.switch-trigger.background-color(href='javascript:void(0)')
+            p Filters
+            .pull-right
+              span.badge.filter.badge-black(data-color='black')
+              span.badge.filter.badge-azure(data-color='azure')
+              span.badge.filter.badge-green(data-color='green')
+              span.badge.filter.badge-orange.active(data-color='orange')
+              span.badge.filter.badge-red(data-color='red')
+              span.badge.filter.badge-purple(data-color='purple')
+            .clearfix
+        li.header-title Sidebar Images
+        li.active
+          a.img-holder.switch-trigger(href='javascript:void(0)')
+            img(src='/img/sidebar-1.jpg', alt='')
+        li
+          a.img-holder.switch-trigger(href='javascript:void(0)')
+            img(src='/img/sidebar-3.jpg', alt='')
+        li
+          a.img-holder.switch-trigger(href='javascript:void(0)')
+            img(src='/img/sidebar-4.jpg', alt='')
+        li
+          a.img-holder.switch-trigger(href='javascript:void(0)')
+            img(src='/img/sidebar-5.jpg', alt='')
+      //- li.button-container
+      //-   div
+      //-     a.btn.btn-info.btn-block(href='http://www.creative-tim.com/product/light-bootstrap-dashboard', target='_blank') Get free demo!
+      //- li.button-container
+      //-   div
+      //-     a.btn.btn-warning.btn-block.btn-fill(href='http://www.creative-tim.com/product/light-bootstrap-dashboard-pro', target='_blank') Buy now!
+      //- li.button-container
+      //-   div
+      //-     a.btn.btn-danger.btn-block(href='http://www.creative-tim.com/product/light-bootstrap-dashboard-pro/documentation/tutorial-components.html', target='_blank') Documentation
+      //- li#sharrreTitle.header-title Thank you for sharing!
+      //- li.button-container
+      //-   button#twitter.btn.btn-social.btn-twitter.btn-round.sharrre
+      //-     i.fa.fa-twitter
+      //-     |  · 256
+      //-   button#facebook.btn.btn-social.btn-facebook.btn-round.sharrre
+      //-     i.fa.fa-facebook-square  · 426

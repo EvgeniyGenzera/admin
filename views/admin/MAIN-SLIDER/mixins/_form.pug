@@ -1,0 +1,50 @@
+mixin form(slide = {})
+  .card.stacked-form
+    .card-header
+      if !slide._id
+        h4.card-title Создание слайда
+      else
+        h4.card-title Редактирование слайда
+    .card-body
+      form(method='POST', action=`/admin/banner/add/${slide._id || ''}` enctype=`${slide._id ? '' : 'multipart/form-data'}`)
+        input(type='hidden' name='type' value='banner')
+        .form-group
+          label Наименование UA
+          input.form-control(type='text', name='name' value=slide.name placeholder='Наименование слайда' required)
+        .form-group
+          label Наименование RU
+          input.form-control(type='text', name='nameRU' value=slide.nameRU placeholder='Наименование слайда' required)
+        .form-group
+          label Описание UA
+          input.form-control(type='text', name='description' value=slide.description placeholder='Описание слайда' required)
+        .form-group
+          label Описание RU
+          input.form-control(type='text', name='descriptionRU' value=slide.descriptionRU placeholder='Описание слайда' required)
+        //- .form-group
+          label Ссылка на страницу (например: beach-tours)
+          input.form-control(type='text', name='link' value=slide.link placeholder='Ссылка на страницу' required)
+        .form-group
+          label Фото
+          br
+          if !slide._id
+            input#photoUpload(type='file', name='photo' required)
+            img#uploadedImg(style='display: none;')
+          else
+            label Загрузить новое фото
+            input#photoUpload(type='file', name='photo')
+            br
+            br
+            img#uploadedImg(src=`/uploads/banner/${slide.photo}` style="width: 30%;")
+        .form-group
+          .form-check
+            label.form-check-label
+              if slide.visible === 'true' || !slide._id
+                input#inp.form-check-input(type='checkbox' checked)
+              if slide.visible === 'false'
+                input#inp.form-check-input(type='checkbox')
+              span.form-check-sign
+              | Опубликован
+              input#hidden(type='hidden' name='visible' value=slide.visible || 'true')
+        button.btn.btn-fill.btn-info(type='submit' value='false')
+          | #{slide._id ? 'Редактировать' : 'Создать'}
+          i.fa.fa-check

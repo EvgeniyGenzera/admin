@@ -1,0 +1,12 @@
+extends ../layout
+include ./mixins/_table
+
+block content
+  .content
+    .container-fluid
+      .row
+        .col-md-12
+          a.btn.btn-fill.btn-info(href='/admin/services/add')
+            i.fa.fa-plus
+            | Добавить запись
+          +table(services)

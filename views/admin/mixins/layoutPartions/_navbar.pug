@@ -1,0 +1,61 @@
+mixin navbar()
+    nav.navbar.navbar-expand-lg
+        .container-fluid
+            .navbar-wrapper
+                .navbar-minimize
+                    button#minimizeSidebar.btn.btn-warning.btn-fill.btn-round.btn-icon.d-none.d-lg-block
+                        i.fa.fa-ellipsis-v.visible-on-sidebar-regular
+                        i.fa.fa-navicon.visible-on-sidebar-mini
+                a.navbar-brand(href='/admin/callback/all')  Doormaster admin panel
+            //- button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', aria-controls='navigation-index', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-bar.burger-lines
+                span.navbar-toggler-bar.burger-lines
+                span.navbar-toggler-bar.burger-lines
+            //- .collapse.navbar-collapse.justify-content-end
+                ul.nav.navbar-nav.mr-auto
+                    //- form.navbar-form.navbar-left.navbar-search-form(role='search')
+                        .input-group
+                            i.nc-icon.nc-zoom-split
+                            input.form-control(type='text', value='', placeholder='Search...')
+                ul.navbar-nav
+                    li.dropdown.nav-item
+                        a.dropdown-toggle.nav-link(href='#', data-toggle='dropdown')
+                            i.nc-icon.nc-planet
+                        ul.dropdown-menu
+                            a.dropdown-item(href='#') Create New Post
+                            a.dropdown-item(href='#') Manage Something
+                            a.dropdown-item(href='#') Do Nothing
+                            a.dropdown-item(href='#') Submit to live
+                            li.divider
+                            a.dropdown-item(href='#') Another action
+                    li.dropdown.nav-item
+                        a.dropdown-toggle.nav-link(href='#', data-toggle='dropdown')
+                            i.nc-icon.nc-bell-55
+                            span.notification 5
+                            span.d-lg-none Notification
+                        ul.dropdown-menu
+                            a.dropdown-item(href='#') Notification 1
+                            a.dropdown-item(href='#') Notification 2
+                            a.dropdown-item(href='#') Notification 3
+                            a.dropdown-item(href='#') Notification 4
+                            a.dropdown-item(href='#') Notification 5
+                    li.nav-item.dropdown
+                        a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='http://example.com', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                            i.nc-icon.nc-bullet-list-67
+                        .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownMenuLink')
+                            a.dropdown-item(href='#')
+                                i.nc-icon.nc-email-85
+                                |  Messages
+                            a.dropdown-item(href='#')
+                                i.nc-icon.nc-umbrella-13
+                                |  Help Center
+                            a.dropdown-item(href='#')
+                                i.nc-icon.nc-settings-90
+                                |  Settings
+                            .divider
+                            a.dropdown-item(href='#')
+                                i.nc-icon.nc-lock-circle-open
+                                |  Lock Screen
+                            a.dropdown-item.text-danger(href='#')
+                                i.nc-icon.nc-button-power
+                                |  Log out

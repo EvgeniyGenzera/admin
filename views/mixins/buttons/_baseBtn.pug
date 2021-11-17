@@ -1,0 +1,4 @@
+mixin baseBtn(baseClass = '', txt = '' , icon = false)
+    button(class=`${baseClass}`)= txt
+        if icon 
+            img(src="images/icons/demo.png", alt="demo")

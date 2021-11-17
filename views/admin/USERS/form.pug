@@ -1,0 +1,14 @@
+extends ../layout
+include ./mixins/_form
+include ./mixins/_ordersTable
+
+block content
+  .content
+    .container-fluid
+      .row
+        .col-md-12
+          a.btn.btn-fill.btn-info(href='/users/all')
+            i.fa.fa-arrow-left
+            | К списку пользователей
+          +form(person)
+          +ordersTable(orders)

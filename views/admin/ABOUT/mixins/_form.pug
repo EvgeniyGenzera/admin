@@ -1,0 +1,43 @@
+mixin form(about = {})
+  .card.stacked-form
+    .card-header
+      if !about
+        h4.card-title Создание
+      else
+        h4.card-title Редактирование
+    .card-body
+      form(method='POST', action='/admin/about')
+        input(type='hidden' name='id' value=about && about._id)
+        .form-group
+          label UA
+          textarea.form-control(type='text', name='textUA' required)
+            | #{about && about.textUA}
+        .form-group
+          label RU
+          textarea.form-control(type='text', name='textRU' required)
+            | #{about && about.textRU}
+        //- .form-group
+        //-   label Фото
+        //-   br
+        //-   if !about._id
+        //-     input#photoUpload(type='file', name='photo' required)
+        //-     img#uploadedImg(style='display: none;')
+        //-   else
+        //-     label Загрузить новое фото
+        //-     input#photoUpload(type='file', name='photo')
+        //-     br
+        //-     br
+        //-     img#uploadedImg(src=`/uploads/about/${about.photo}` style="width: 50%;")
+        //- .form-group
+        //-   .form-check
+        //-     label.form-check-label
+        //-       if about.visible === 'true' || !about._id
+        //-         input#inp.form-check-input(type='checkbox' checked)
+        //-       if about.visible === 'false'
+        //-         input#inp.form-check-input(type='checkbox')
+        //-       span.form-check-sign
+        //-       | Опубликован
+        //-       input#hidden(type='hidden' name='visible' value=about.visible || 'true')
+        button.btn.btn-fill.btn-info(type='submit' value='false')
+          | #{about ? 'Редактировать' : 'Создать'}
+          i.fa.fa-check

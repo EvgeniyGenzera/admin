@@ -1,0 +1,35 @@
+mixin form(portfolio = {})
+  .card.stacked-form
+    .card-header
+      h4.card-title Создание записи
+    .card-body
+      form(method='POST', action=`/admin/portfolio/add/${portfolio._id ? portfolio._id : ''}` enctype=`${portfolio._id ? '' : 'multipart/form-data'}`)
+        input(type='hidden' name='type' value='portfolio')
+        .form-group
+          label Заголовк
+          input.form-control(type='text', name='title' value=portfolio.title placeholder='Заголовк')
+        .form-group
+          label Фото
+          br
+          if !portfolio._id
+            input#photoUpload(type='file', name='photo' required)
+            img#uploadedImg(style='display: none;')
+          else
+            label Загрузить новое фото
+            input#photoUpload(type='file', name='photo')
+            br
+            br
+            img#uploadedImg(src=`/uploads/portfolio/${portfolio.photo}` style="width: 50%;")
+        //- .form-group
+        //-   .form-check
+        //-     label.form-check-label
+        //-       if portfolio.visible === 'true'
+        //-         input#inp.form-check-input(type='checkbox' value='' checked)
+        //-       else
+        //-         input#inp.form-check-input(type='checkbox' value='')
+        //-       span.form-check-sign
+        //-       | Опубликована
+        //-       input#hidden(type='hidden', name='visible', value=`${service.visible || 'false'}`)
+        button.btn.btn-fill.btn-info(type='submit')
+          | #{portfolio._id ? 'Редактировать' : 'Создать'}
+          i.fa.fa-check

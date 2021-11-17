@@ -1,0 +1,42 @@
+mixin form(banner = {})
+  .card.stacked-form
+    .card-header
+      if !banner._id
+        h4.card-title Создание слайда
+      else
+        h4.card-title Редактирование слайда
+    .card-body
+      form(method='POST', action='/admin/banner' enctype=`${banner._id ? '' : 'multipart/form-data'}`)
+        input(type='hidden' name='type' value='banner')
+        input(type='hidden' name='id' value=banner._id)
+        .form-group
+          label Заголовок
+          input.form-control(type='text', name='title' value=banner.title placeholder='Заголовок' required)
+        .form-group
+          label Подзаголовок
+          input.form-control(type='text', name='subTitle' value=banner.subTitle placeholder='Подзаголовок' required)
+        .form-group
+          label Фото
+          br
+          if !banner._id
+            input#photoUpload(type='file', name='photo' required)
+            img#uploadedImg(style='display: none;')
+          else
+            label Загрузить новое фото
+            input#photoUpload(type='file', name='photo')
+            br
+            br
+            img#uploadedImg(src=`/uploads/banner/${banner.photo}` style="width: 50%;")
+        //- .form-group
+        //-   .form-check
+        //-     label.form-check-label
+        //-       if banner.visible === 'true' || !banner._id
+        //-         input#inp.form-check-input(type='checkbox' checked)
+        //-       if banner.visible === 'false'
+        //-         input#inp.form-check-input(type='checkbox')
+        //-       span.form-check-sign
+        //-       | Опубликован
+        //-       input#hidden(type='hidden' name='visible' value=banner.visible || 'true')
+        button.btn.btn-fill.btn-info(type='submit' value='false')
+          | #{banner._id ? 'Редактировать' : 'Создать'}
+          i.fa.fa-check

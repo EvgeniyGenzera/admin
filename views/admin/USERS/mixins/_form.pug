@@ -1,0 +1,60 @@
+mixin form(person = {})
+  .card.stacked-form
+    .card-header
+      h4.card-title Редактирование пользователя
+    .card-body
+      form(method='POST', action=`/users/add/${person._id}`)
+        .row
+          .col-md-4
+            .form-group
+              label Имя
+              input.form-control(type='text', name='name' value=person.name && person.name.split(' ')[0])
+          .col-md-4
+            .form-group
+              label Фамилия
+              input.form-control(type='text', name='surname' value=person.name && person.name.includes(' ') && person.name.split(' ')[1])
+          .col-md-4
+            .form-group
+              label Телефон
+              input.form-control(type='number', name='phone' value=person.phone)
+        .row
+          .col-md-4
+            .form-group
+              label Резервный телефон
+              input.form-control(type='number', name='additionalPhone' value=person.additionalPhone)
+          .col-md-4
+            .form-group
+              label E-mail
+              input.form-control(type='email', name='email' value=person.email)
+          .col-md-4
+            .form-group
+              label Дата рождения
+              input.form-control(type='date', name='dateOfBirth' value=person.dateOfBirth)
+        .row
+          .col-md-4
+            .form-group
+              label Улица
+              input.form-control(type='text', name='street' value=person.address.street)
+          .col-md-4
+            .form-group
+              label Дом
+              input.form-control(type='number', name='houseNumber' value=person.address.houseNumber)
+          .col-md-4
+            .form-group
+              label Подъезд
+              input.form-control(type='number', name='porch' value=person.address.porch)
+        .row
+          .col-md-4
+            .form-group
+              label Этаж
+              input.form-control(type='number', name='floor' value=person.address.floor)
+          .col-md-4
+            .form-group
+              label Квартира
+              input.form-control(type='number', name='apartment' value=person.address.apartment)
+          .col-md-4
+            .form-group
+              label Код/домофон
+              input.form-control(type='number', name='code' value=person.address.code)
+        //- button.btn.btn-fill.btn-info(type='submit' value='false') Редактировать
+          i.fa.fa-check

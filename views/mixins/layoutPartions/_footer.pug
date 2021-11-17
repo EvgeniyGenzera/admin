@@ -1,0 +1,38 @@
+mixin footer()
+    .footer 
+        .container
+            .footer__content
+                img(src="/images/logo.png", alt="logo")
+                nav 
+                    li.phone
+                        a(href="#") +33 (0) 185 157 920 
+                    li 
+                        a OUR PRODUCTS
+                    li 
+                        a Contacts
+                    li 
+                        a Terms of sale
+                    li 
+                        a privacy policy
+                    li.lang#langFooterDropdown
+                        span EN 
+                        img.lang__img(src="/images/icons/en-lang.png", alt="lang")
+                        img#langContent.lang__arrow(src="/images/icons/down.png", alt="arrow")
+                        .lang__dropdown
+                            ul
+                                li 
+                                    img(src="/images/icons/en-lang.png", alt="lang") 
+                                    | Hebrew
+                                li 
+                                    img(src="/images/icons/en-lang.png", alt="lang") 
+                                    | French
+                                li 
+                                    img(src="/images/icons/en-lang.png", alt="lang") 
+                                    | English
+    .copyright 
+        p Copyright AgmaTaha 2021
+    block scripts
+        script(src="http://code.jquery.com/jquery-1.11.0.min.js")
+        script(src="http://code.jquery.com/jquery-migrate-1.2.1.min.js")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer")
+        script(src='dist/App.bundle.js' defer)  

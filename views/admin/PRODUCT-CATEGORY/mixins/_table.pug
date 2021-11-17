@@ -1,0 +1,27 @@
+mixin table(categories = {})
+  .card.table-with-links
+    .card-header
+      h4.card-title #{title}
+      if !categories.length
+        p Нету добавленных записей
+      //- p.card-category Here is a subtitle for this table
+    if categories.length
+      .card-body.table-full-width
+        table.table
+          thead
+            tr
+              th.text-center #
+              th Заголовок
+              th.text-right Действия
+          tbody
+            each w, index in categories
+              tr
+                td.text-center #{index + 1}
+                td #{w.nameUA}
+                td.td-actions.text-right
+                  //- a.btn.btn-info.btn-link.btn-xs(href='#', rel='tooltip', title='View Profile')
+                  //-   i.fa.fa-user
+                  a.btn.btn-success.btn-link.btn-xs(href=`/admin/product-categories/add/${w._id}`, rel='tooltip', title='Редактировать')
+                    i.fa.fa-edit
+                  a.btn.btn-danger.btn-link.btn-xs(href=`/admin/product-categories/delete/${w._id}`, rel='tooltip', title='Удалить')
+                    i.fa.fa-times

@@ -1,0 +1,46 @@
+mixin header()
+    doctype html
+    head
+    meta(charset='UTF-8')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer")
+    link(rel='stylesheet', href='/dist/style.css')
+    body
+        .subheader 
+            p.subheader__text CALL US TODAY FOR FREE CONSULTANCY +33 (0) 185 157 920
+        header 
+            .container 
+                .header 
+                    .logo 
+                        img(src="/images/logo.png", alt="AGMATT")
+                    nav    
+                        li 
+                            a.active(href="") home 
+                        li 
+                            a(href="") about
+                        li 
+                            a(href="") our products
+                        li 
+                            a(href="") contacts
+                        li 
+                            a(href="") terms of sale
+                    .action 
+                        .lang#langDropdown
+                            span EN 
+                            img.lang__img(src="/images/icons/en-lang.png", alt="lang")
+                            img#langContent.lang__arrow(src="/images/icons/down.png", alt="arrow")
+                            .lang__dropdown
+                                ul
+                                    li 
+                                        a(href='/ua')
+                                            img(src="/images/icons/en-lang.png", alt="lang") 
+                                            | Hebrew
+                                    li 
+                                        img(src="/images/icons/en-lang.png", alt="lang") 
+                                        | French
+                                    li 
+                                        img(src="/images/icons/en-lang.png", alt="lang") 
+                                        | English
+                        .card 
+                            img(src="images/icons/backet.png", alt="backet")
+                            span 0

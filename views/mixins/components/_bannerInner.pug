@@ -1,0 +1,6 @@
+mixin bannerInner(text='', subtext='')
+    .banner-inner
+        .container 
+            h1.banner-inner__title= text
+            if subtext 
+                p.banner-inner__subtitle= subtext

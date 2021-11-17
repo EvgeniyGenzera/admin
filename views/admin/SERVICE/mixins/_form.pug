@@ -1,0 +1,46 @@
+mixin form(service = {})
+  .card.stacked-form
+    .card-header
+      h4.card-title Создание записи
+    .card-body
+      form(method='POST', action=`/admin/services/add/${service._id ? service._id : ''}` enctype=`${service._id ? '' : 'multipart/form-data'}`)
+        input(type='hidden' name='type' value='services')
+        .form-group
+          label Заголовк UA
+          input.form-control(type='text', name='titleUA' value=service.titleUA placeholder='Заголовк UA')
+        .form-group
+          label Заголовк RU
+          input.form-control(type='text', name='titleRU' value=service.titleRU placeholder='Заголовк RU')
+        .form-group
+          label Текст UA
+          textarea.form-control(type='text', name='descriptionUA' value=service.descriptionUA placeholder='Текст UA')
+            | #{service && service.descriptionUA}
+        .form-group
+          label Текст RU
+          textarea.form-control(type='text', name='descriptionRU' value=service.descriptionRU placeholder='Текст RU')
+            | #{service && service.descriptionRU}
+        .form-group
+          label Фото
+          br
+          if !service._id
+            input#photoUpload(type='file', name='photo' required)
+            img#uploadedImg(style='display: none;')
+          else
+            label Загрузить новое фото
+            input#photoUpload(type='file', name='photo')
+            br
+            br
+            img#uploadedImg(src=`/uploads/services/${service.photo}` style="width: 50%;")
+        //- .form-group
+        //-   .form-check
+        //-     label.form-check-label
+        //-       if service.visible === 'true'
+        //-         input#inp.form-check-input(type='checkbox' value='' checked)
+        //-       else
+        //-         input#inp.form-check-input(type='checkbox' value='')
+        //-       span.form-check-sign
+        //-       | Опубликована
+        //-       input#hidden(type='hidden', name='visible', value=`${service.visible || 'false'}`)
+        button.btn.btn-fill.btn-info(type='submit')
+          | #{service._id ? 'Редактировать' : 'Создать'}
+          i.fa.fa-check

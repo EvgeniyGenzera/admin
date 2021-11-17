@@ -1,0 +1,19 @@
+mixin footer()
+    footer.footer
+        .container
+            nav
+                ul.footer-menu
+                    li
+                        a(href='#') Home
+                    li
+                        a(href='#') Company
+                    li
+                        a(href='#') Portfolio
+                    li
+                        a(href='#') Blog
+                p.copyright.text-center
+                    | ©
+                    script.
+                        document.write(new Date().getFullYear())
+                    a(href='http://www.creative-tim.com') Creative Tim
+                    | , made with love for a better web

@@ -1,0 +1,26 @@
+mixin form(callback = {})
+  .card.stacked-form
+    .card-header
+      h4.card-title Просмотр обращения -&nbsp;
+        !=h.moment(callback.created).locale('ru').format('L')
+        | &nbsp;/
+        |
+        !=h.moment(callback.created).locale('ru').format('LT')
+    .card-body
+      form
+        .row
+          .col-md-4
+            .form-group
+              label Имя
+              input.form-control(type='text', name='name' value=callback.name)
+          .col-md-4
+            .form-group
+              label Телефон
+              input.form-control(type='text', name='phone' value=callback.phone)
+          if callback.message
+            .col-md-4
+              .form-group
+                label Сообщение
+                input.form-control(type='text', name='message' value=callback.message)
+        //- button.btn.btn-fill.btn-info(type='submit' value='false') Редактировать
+          i.fa.fa-check

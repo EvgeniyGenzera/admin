@@ -1,0 +1,12 @@
+extends ../layout
+include ./mixins/_form
+
+block content
+  .content
+    .container-fluid
+      .row
+        .col-md-12
+          a.btn.btn-fill.btn-info(href='/admin/services/all')
+            i.fa.fa-arrow-left
+            | К списку записей
+          +form(service)

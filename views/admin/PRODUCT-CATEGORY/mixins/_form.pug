@@ -1,0 +1,15 @@
+mixin form(category = {})
+  .card.stacked-form
+    .card-header
+      h4.card-title Создание записи
+    .card-body
+      form(method='POST', action=`/admin/product-categories/add/${category._id ? category._id : ''}`)
+        .form-group
+          label Заголовок UA
+          input.form-control(type='text', name='nameUA' value=category.nameUA placeholder='Заголовок UA')
+        .form-group
+          label Заголовок RU
+          input.form-control(type='text', name='nameRU' value=category.nameRU placeholder='Заголовок RU')
+        button.btn.btn-fill.btn-info(type='submit')
+          | #{category._id ? 'Редактировать' : 'Создать'}
+          i.fa.fa-check

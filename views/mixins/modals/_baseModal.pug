@@ -1,0 +1,55 @@
+mixin baseModal()
+    .modal
+        .close 
+            img(src="/images/icons/modal-close.png", alt="close")
+        .modal__content
+            h2.title checkout
+            .checkout-modal 
+                p PRODUCT
+                .columns 
+                    p PRICE
+                    p QUANTITY
+                    p SUBTOTAL
+            .single-product 
+                .info 
+                    button.delete 
+                        img(src="/images/icons/delete-icon.png", alt="delete") 
+                    img.product-img(src="/images/shield.png", alt="shield")
+                    p.name Service And Support Package 6 Months
+                .total 
+                    p.price 250 €
+                    .changes 
+                        span -
+                        span 1
+                        span +
+                    p.price-total 250 €
+            form.coupon 
+                label(for="")
+                    input(type="text" placeholder='Coupon code')
+                button Apply coupon
+            input#first.first-checkbox(type='checkbox' name='first' value='yes')
+            label.approve(for='first') 
+                | I agree to the 
+                a.green-txt(href='/terms-of-sale') Terms of sale
+                | and the 
+                a.green-txt(href='/privacy-statement') and Privacy Statement
+                |
+                | by proceeding.
+            p 
+                span Total
+                span 400 €
+                | (Includes 50 € VAT)
+            a.proceed(href="#") Proceed to checkout
+            a.continue(href="#") continue shopping
+        .modal-static 
+            h2.modal-static__title Service and support package includes:    
+            ul.modal-static__list
+                li 
+                    img(src="/images/icons/check-circle.png", alt="check")
+                    | Help and Support from certified IT professionals
+                li 
+                    img(src="/images/icons/check-circle.png", alt="check")
+                    | Innovative technology for threat prevention
+                li 
+                    img(src="/images/icons/check-circle.png", alt="check")
+                    | Transfer your subscription to another computer quickly and easily.

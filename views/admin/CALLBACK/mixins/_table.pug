@@ -1,0 +1,37 @@
+include ../../mixins/layoutPartions/_pagination
+
+mixin table(callbacks = {})
+  .card.table-with-links
+    .card-header
+      h4.card-title #{title}
+      if !callbacks.length
+        p Нету новых обращений
+      //- p.card-category Here is a subtitle for this table
+    if callbacks.length
+      .card-body.table-full-width
+        table.table
+          thead
+            tr
+              th.text-center #
+              th Имя
+              th Телефон
+              th Назначение
+              th Дата
+              th.text-right Действия
+          tbody
+            each c, index in callbacks
+              tr
+                td.text-center #{index + 1}
+                td #{c.name}
+                td #{c.phone}
+                td #{c.type}
+                td!=h.moment(c.created).locale('ru').format('lll')
+                td.td-actions.text-right
+                  //- a.btn.btn-info.btn-link.btn-xs(href='#', rel='tooltip', title='View Profile')
+                    i.fa.fa-user
+                  a.btn.btn-success.btn-link.btn-xs(href=`/admin/callback/add/${c._id}`, rel='tooltip', title='Редактировать')
+                    i.fa.fa-edit
+                  a.btn.btn-danger.btn-link.btn-xs(href=`/admin/callback/delete/${c._id}`, rel='tooltip', title='Удалить')
+                    i.fa.fa-times
+        if pages > 1
+          +pagination('callback', page, pages, count)

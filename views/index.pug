@@ -1,0 +1,139 @@
+include mixins/layoutPartions/_header
+include mixins/layoutPartions/_footer
+include mixins/buttons/_baseBtn
+include mixins/modals/_baseModal
+
+block userHead
+  title= "HomePage"
+  +header()
+  .banner
+    .container 
+      h1.banner__title #{data.bannerTxt}
+      p.banner__subtitle 
+        | We are an online platform whose mission is simple: solve your computer problems! Why using a computer should be complicated?<br/> This is the reason for our existence and the idea on which the project was based!
+      .banner__btns
+        +baseBtn("baseGreenBtn", "Request leave Demo", true)
+        +baseBtn("baseTransparentBtn", "Our solutions", false)
+  .about 
+    .container
+      h2.about__title About us
+      p.about__subtitle We are an online platform whose mission is simple: solve your computer problems!<br/> Why using a computer should be complicated? This is the reason for our existence and the idea on which the project was based!
+      p.about__description For problems of slowness, viruses, file loss, failure, update, peripheral adjustment... <br/>
+        span With a few clicks, the solution is implemented!
+      .about__cta 
+        .single 
+          img(src="/images/webdevelopment.png", alt="cta")
+          p.single__title Qualified staff
+          p.single__description We make sure to recruit for our teams only professionals in the field of fiber optics, who are trained and already have sufficient experience in the business.
+        .single 
+          img(src="/images/security.png", alt="cta")
+          p.single__title Qualified staff
+          p.single__description We make sure to recruit for our teams only professionals in the field of fiber optics, who are trained and already have sufficient experience in the business.
+        .single 
+          img(src="/images/encryptedprocessor.png", alt="cta")
+          p.single__title Qualified staff
+          p.single__description We make sure to recruit for our teams only professionals in the field of fiber optics, who are trained and already have sufficient experience in the business.
+  +baseModal()
+  .goal
+    .container 
+      .goal__content
+        .main 
+          img(src="/images/goal.png", alt="goal")
+          h2.main__title Our goal is to detect and prevent attacks to your personal data.
+          .main__btns 
+            +baseBtn("baseGreenBtn", "contact us", true)
+            +baseBtn("baseTransparentBtn", "get security", false)
+        .info 
+          ul.info__list
+            li.item 
+              img(src="/images/icons/check-circle.png", alt="check")
+              | Easy There is no phone menu or robot, always contact an IT specialist directly.
+            li.item
+              img(src="/images/icons/check-circle.png", alt="check")
+              | Between your diagnosis and your solution to the problem.
+            li.item.item-inner 
+              img(src="/images/icons/check-circle.png", alt="check")
+              | Effective
+            ul.inner
+              li.item We strive to provide the best solution to your IT problems.
+              li.item And the best answer to your questions, by recruiting all of our expertise at a time.
+              li.item Wherever you are, you can ask for our help and get it quickly.
+            li.item.item-inner
+              img(src="/images/icons/check-circle.png", alt="check")
+              | Economic
+            ul.inner  
+              li.item We offer you the lowest prices on the market, and allow as many people as possible to enjoy effective and quality assistance, at an affordable price.
+              li.item Our assets flexibility 24/7 – 365 days a year security Secure payment transparency Price is known in advance simplicity Online intervention
+  .solution 
+    .container
+      h2.solution__title Solution for your security
+      p.solution__subtitle We offer you the lowest prices on the market, and allow as many people as possible to enjoy effective and quality assistance, at an affordable price.
+      .package
+        .info 
+          h3.info__title Service and support package includes:
+          ul.info__list
+            li.item 
+              img(src="/images/icons/check-circle.png", alt="check")
+              | Help and Support from certified IT professionals
+            li.item 
+              img(src="/images/icons/check-circle.png", alt="check")
+              | Innovative technology for threat prevention
+            li.item 
+              img(src="/images/icons/check-circle.png", alt="check")
+              | Transfer your subscription to another computer quickly and easily.
+          a.info__link(href="#") See all service 
+        .content
+          .single 
+            span.single__action.orange bestseller 
+            img.single__img(src="/images/shield.png", alt="shield")
+            p.single__price 250 
+            span.single__subprice /3 months
+            +baseBtn("baseGreenBtn", "Buy Now", false)
+            p.single__demo Request Demo 
+            span.single__time  3 months
+          .single 
+            span.single__action.green most popular 
+            img.single__img(src="/images/shield.png", alt="shield")
+            p.single__price 250 
+            span.single__subprice /3 months
+            +baseBtn("baseGreenBtn", "Buy Now", false)
+            p.single__demo Request Demo 
+            span.single__time  3 months
+          .single 
+            span.single__action.yellow maximum savings 
+            img.single__img(src="/images/shield.png", alt="shield")
+            p.single__price 250 
+            span.single__subprice /3 months
+            +baseBtn("baseGreenBtn", "Buy Now", false)
+            p.single__demo Request Demo 
+            span.single__time  3 months
+  .include
+    .container
+      h2.include__title All packages include: 
+      ul.include__list
+        li.item 
+          | Optimization.
+          p An optimization procedure will be performed on your device, to make it run as fast and smooth as possible.
+        li.item
+          | We help fixing issues in your computer.
+          p All your questions answered!
+        li.item
+          | Clean up.
+          p A thorough and comprehensive clean-up by our certified technicians to remove any malicious traces and unwanted programs.
+        li.item
+          | OS Upgrade service, We can upgrade the Operating System of your device throughout the entire subscription period.
+          p Please note that upgrading Windows OS may require an additional purchase of a product key.
+        li.item
+          | Software install and uninstall service.
+          p We install new products you might have purchased and make sure installation goes correct and the program(s) have the right settings for you. We also make sure you obtain complete un-installations of any unwanted program(s) on your PC.
+        li.item
+          | Updates & PC maintenance checks.
+        li.item
+          | Pro-active maintenance checks to keep your computer running smooth.
+          p Our agents will reach out to you.
+      .include__btns
+        +baseBtn("baseGreenBtn", "Request leave Demo", true)
+        +baseBtn("baseTransparentBtn", "contact us", false)
+
+        
+  +footer()

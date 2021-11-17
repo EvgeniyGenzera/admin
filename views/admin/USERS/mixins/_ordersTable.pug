@@ -1,0 +1,35 @@
+mixin ordersTable(orders = {})
+  .card.table-with-links
+    .card-header
+      h4.card-title Заказы
+      if !orders.length
+        p У данного пользователя нету заказов
+      //- p.card-category Here is a subtitle for this table
+    if orders.length
+      .card-body.table-full-width
+        table.table
+          thead
+            tr
+              th.text-center #
+              th Номер заказа
+              th Дата заказа
+              th Метод доставки
+              th Сумма заказа
+              th Метод оплаты
+              th.text-right Действия
+          tbody
+            each order, index in orders
+              tr
+                td.text-center #{index + 1}
+                td #{order.order_id}
+                td!=h.moment(order.created).locale('ru').format('L')
+                td #{order.deliveryMethod}
+                td #{order.payment.total} грн
+                td #{order.payment.method}
+                td.td-actions.text-right
+                  //- a.btn.btn-info.btn-link.btn-xs(href='#', rel='tooltip', title='View Profile')
+                    i.fa.fa-user
+                  a.btn.btn-success.btn-link.btn-xs(href=`/orders/add/${order._id}`, rel='tooltip', title='Перейти')
+                    i.fa.fa-edit
+                  //- a.btn.btn-danger.btn-link.btn-xs(href=`/users/delete/${u._id}`, rel='tooltip', title='Удалить')
+                    i.fa.fa-times

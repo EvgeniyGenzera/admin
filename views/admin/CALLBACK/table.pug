@@ -1,0 +1,10 @@
+extends ../layout
+include ./mixins/_table
+
+block content
+  .content
+    .container-fluid
+      .row
+        .col-md-12
+          +table(callbacks)
+          //- +table(adminUsers, titleAdminUsers)

@@ -1,0 +1,25 @@
+extends ../layout
+include ./mixins/_table
+
+block content
+  .content
+    .container-fluid
+      .row
+        .col-md-12
+          .card.stacked-form
+            .card-header
+              h4.card-title Описание
+            .card-body
+              form(method="POST" action="/engraving/title")
+                input(type="hidden" name="id" value=engravings[0] && engravings[0]._id)
+                .form-group
+                  label Описание
+                  input.form-control(type='text', name='title' value=engravings[0] && engravings[0].title placeholder='Описание')
+                button.btn.btn-fill.btn-info(type='submit')
+                  | #{engravings[0].title ? 'Редактировать' : 'Создать'}
+                  i.fa.fa-check
+        .col-md-12
+          a.btn.btn-fill.btn-info(href='/engraving/add')
+            i.fa.fa-plus
+            | Добавить запись
+          +table(engravings)

@@ -1,0 +1,105 @@
+extends ../layout
+include ./mixins/_form
+
+block content
+  .content
+    .container-fluid
+      .row
+        .col-md-12
+          //- a.btn.btn-fill.btn-info(href='/admin/products/all')
+            i.fa.fa-arrow-left
+            | К списку записей
+          +form(data)
+block userScripts
+  script.
+    window.onload = function() {
+      setTimeout(function() {
+        var tmpl = '#{product ? product.descUA : ''}' || '';
+        var tmplRU = '#{product ? product.descRU : ''}' || '';
+        var tmplFormatted = tmpl.replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&lsquo;/g, "\''").replace(/&rsquo;/g, "\''").replace(/&#39;/g, "\''").replace("\'", "");
+        var tmplFormattedRU = tmplRU.replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&lsquo;/g, "\''").replace(/&rsquo;/g, "\''").replace(/&#39;/g, "\''").replace("\'", "");
+        $('#summernote').summernote('code', tmplFormatted);
+        $('#summernote1').summernote('code', tmplFormattedRU);
+      }, 100);
+    }
+    $(document).ready(function() {
+      $('summernote').summernote('editor.saveRange');
+      var $summernote = $('#summernote').summernote({
+        lang: 'en-US',
+        height: 200,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['fontsize', ['fontsize']],
+          ['fontname', ['fontname']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['height', ['height']]
+        ],
+        callbacks: {
+          onImageUpload: function (files) {
+            sendFile($summernote, files[0]);
+          }
+        }
+      });
+
+      var $summernoteRU = $('#summernote1').summernote({
+        lang: 'en-US',
+        height: 200,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['fontsize', ['fontsize']],
+          ['fontname', ['fontname']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['height', ['height']]
+        ],
+        callbacks: {
+          onImageUpload: function (files) {
+            sendFile($summernote, files[0]);
+          }
+        }
+      });
+
+      var $summernoteEN = $('#summernote2').summernote({
+        lang: 'en-US',
+        height: 200,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['fontsize', ['fontsize']],
+          ['fontname', ['fontname']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['picture']],
+          ['height', ['height']]
+        ],
+        callbacks: {
+          onImageUpload: function (files) {
+            sendFile($summernote, files[0]);
+          }
+        }
+      });
+
+      function sendFile($summernote, file) {
+        var formData = new FormData();
+        formData.append("file", file);
+        $.ajax({
+          url: '/print/upload',
+          data: formData,
+          cache: false,
+          contentType: false,
+          processData: false,
+          type: 'POST',
+          success: function (data) {
+            $summernote.summernote('insertImage', data.data, function ($image) {
+              $image.attr('src', data.data);
+            });
+          }
+        });
+      }
+    })

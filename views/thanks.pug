@@ -1,0 +1,49 @@
+include mixins/layoutPartions/_header
+include mixins/layoutPartions/_footer
+include mixins/components/_bannerInner
+block userHead
+    title= "Checkout"
++header()
++bannerInner('Complete purchase', 'Your order was successfully received. We have emailed the purchase receipt to you.')
+.checkout
+    .container
+        h3.title Order received
+        .checkout__information 
+            p.product
+                span Order Number
+                span AT 12485-245-865
+            p.product
+                span Date
+                span.green-txt May 20, 2022
+            p.product
+                span Total
+                span.green-txt 400 €
+            p.product
+                span SUBTOTAL
+                span.green-txt 400 €
+            p.product
+                span Payment methot
+                span.green-txt Banck card
+        
+        h3.title order information
+        .checkout__information 
+            p.column-name
+                span product
+                span subtotal
+            p.product
+                span Service And Support Package 6 Months  × 1	
+                span.green-txt 250 €
+            p.product
+                span Service And Support Package 3 Months  × 1	
+                span.green-txt 150 €
+            p.subtotal
+                span SUBTOTAL
+                span.green-txt 400 €
+            p.total
+                span TOTAL
+                span 
+                    span.green-txt 400 € 
+                    | (Includes 50 € VAT)
+        a.go-home(href='/') Home
+    
++footer()

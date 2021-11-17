@@ -1,0 +1,33 @@
+include ../../mixins/layoutPartions/_pagination
+
+mixin table(users = {})
+  .card.table-with-links
+    .card-header
+      h4.card-title #{title}
+      if !users.length
+        p Нету добавленных пользователей
+      //- p.card-category Here is a subtitle for this table
+    if users.length
+      .card-body.table-full-width
+        table.table
+          thead
+            tr
+              th.text-center #
+              th Имя
+              th Телефон
+              //- th.text-right Действия
+          tbody
+            each u, index in users
+              tr
+                td.text-center #{index + 1}
+                td #{u.name}
+                td #{u.phone}
+                td.td-actions.text-right
+                  //- a.btn.btn-info.btn-link.btn-xs(href='#', rel='tooltip', title='View Profile')
+                    i.fa.fa-user
+                  a.btn.btn-success.btn-link.btn-xs(href=`/users/add/${u._id}`, rel='tooltip', title='Редактировать')
+                    i.fa.fa-edit
+                  a.btn.btn-danger.btn-link.btn-xs(href=`/users/delete/${u._id}`, rel='tooltip', title='Удалить')
+                    i.fa.fa-times
+        if pages > 1
+          +pagination('users', page, pages, count)

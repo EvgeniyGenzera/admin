@@ -1,0 +1,54 @@
+mixin form(product = {}, productCategories)
+  .card.stacked-form
+    .card-header
+      h4.card-title Создание записи
+    .card-body
+      form(method='POST', action=`/admin/products/add/${product._id ? product._id : ''}`)
+        input(type='hidden' name='type' value='product')
+        .row
+          .col-md-12
+            .form-group
+              label Наименование UA
+              input.form-control(type='text', name='nameUA' value=product._id && product.nameUA placeholder='Наименование UA')
+          .col-md-12
+            .form-group
+              label Наименование RU
+              input.form-control(type='text', name='nameRU' value=product._id && product.nameRU placeholder='Наименование RU')
+          .col-md-12
+            .form-group
+              label Описание UA
+              textarea#summernote.form-control(name='descUA' placeholder='Описание UA')
+          .col-md-12
+            .form-group
+              label Описание RU
+              textarea#summernote1.form-control(name='descRU' placeholder='Описание RU')
+          .col-md-6
+            .form-group
+              label Старая цена
+              input.form-control(type='text', name='oldPrice' value=product._id && product.oldPrice placeholder='Старая цена')
+          .col-md-6
+            .form-group
+              label Новая цена
+              input.form-control(type='text', name='newPrice' value=product._id && product.newPrice placeholder='Новая цена')
+          .col-md-12
+            .form-group
+              label Категория
+              select.selectpicker(data-title='Выберите категорию товара', name='category', data-style='btn-info btn-fill btn-block', data-menu-style='dropdown-blue' required)
+                each category in productCategories
+                  option(value=category._id selected=(product._id && product.category._id.toString() === category._id.toString())) #{category.nameUA}
+          .col-md-12
+            .form-group
+              label Фото
+              br
+              if !product._id
+                input#photoUpload(type='file', name='photo' required)
+                img#uploadedImg(style='display: none;')
+              else
+                label Загрузить новое фото
+                input#photoUpload(type='file', name='photo')
+                br
+                br
+                img#uploadedImg(src=`/uploads/product/${product.photo}` style="width: 30%;")
+        button.btn.btn-fill.btn-info(type='submit')
+          | #{product._id ? 'Редактировать' : 'Создать'}
+          i.fa.fa-check

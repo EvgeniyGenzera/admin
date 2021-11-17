@@ -1,0 +1,76 @@
+mixin sidebar()
+    .sidebar(data-color='orange', data-image='/img/sidebar-5.jpg')
+        //
+            Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+            Tip 2: you can also add an image using data-image tag
+        .sidebar-wrapper
+            .logo
+                a.simple-text.logo-mini(href='/admin/callback/all') DM
+                a.simple-text.logo-normal(href='/admin/callback/all') Doormaster
+            .user
+                .photo
+                    img(src=user && user.gravatar)
+                .info
+                    a.collapsed(data-toggle='collapse', href='#collapseExample')
+                        span
+                            | #{user && user.name}
+                            b.caret
+                    #collapseExample.collapse
+                        ul.nav
+                            if user
+                                li
+                                    a.profile-dropdown(href='/admin/logout')
+                                        span.sidebar-mini В
+                                        span.sidebar-normal Выйти
+            ul.nav
+                //- li.nav-item(class=(currentPath.endsWith('/admin') ? 'active' : ''))
+                    a.nav-link(href='/admin')
+                        i.nc-icon.nc-chart-pie-35
+                        p Главная
+                li.nav-item(class=(currentPath.startsWith('/admin/callback') ? 'active' : ''))
+                    a.nav-link(href='/admin/callback/all')
+                        i.nc-icon.nc-tag-content
+                        p Обращения
+                li.nav-item(class=(currentPath.startsWith('/admin/banner') ? 'active' : ''))
+                    a.nav-link(href='/admin/banner/all')
+                        i.fa.fa-image
+                        p Главный баннер
+                li.nav-item(class=(currentPath.startsWith('/admin/sale') ? 'active' : ''))
+                    a.nav-link(href='/admin/sale/all')
+                        i.fa.fa-image
+                        p Акции
+                li.nav-item(class=(currentPath.startsWith('/admin/about') ? 'active' : ''))
+                    a.nav-link(href='/admin/about')
+                        i.fa.fa-info
+                        p О нас
+                li.nav-item(class=(currentPath.startsWith('/admin/review') ? 'active' : ''))
+                    a.nav-link(href='/admin/review/all')
+                        i.fa.fa-info
+                        p Отзывы
+                //- li.nav-item(class=(currentPath.startsWith('/whyus') ? 'active' : ''))
+                    a.nav-link(href='/whyus/all')
+                        i.fa.fa-question
+                        p Почему мы?
+                li.nav-item(class=(currentPath.startsWith('/admin/products') || currentPath.startsWith('/admin/product-categories')))
+                    a.nav-link(data-toggle='collapse', href='#products')
+                        i.nc-icon.nc-app
+                        p Товары
+                            b.caret
+                    #products.collapse(class=(currentPath.startsWith('/admin/products') || currentPath.startsWith('/admin/product-categories')))
+                        ul.nav
+                            li.nav-item(class=(currentPath.startsWith('/admin/products') ? 'active' : ''))
+                                a.nav-link(href='/admin/products/all')
+                                    i.nc-icon.nc-bullet-list-67
+                                    p Список товаров
+                            li.nav-item(class=(currentPath.endsWith('/admin/product-categories/all') ? 'active' : ''))
+                                a.nav-link(href='/admin/product-categories/all')
+                                    i.nc-icon.nc-grid-45
+                                    p Категории
+                li.nav-item(class=(currentPath.startsWith('/admin/services') ? 'active' : ''))
+                    a.nav-link(href='/admin/services/all')
+                        i.nc-icon.nc-bullet-list-67
+                        p Услуги
+                li.nav-item(class=(currentPath.startsWith('/admin/portfolio') ? 'active' : ''))
+                    a.nav-link(href='/admin/portfolio/all')
+                        i.fa.fa-camera
+                        p Портфолио

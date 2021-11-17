@@ -1,0 +1,41 @@
+include ../../mixins/layoutPartions/_pagination
+
+mixin table(reviews = {})
+  .card.table-with-links
+    .card-header
+      h4.card-title #{title}
+      if !reviews.length
+        p Нету добавленных отзывов
+      //- p.card-category Here is a subtitle for this table
+    if reviews.length
+      .card-body.table-full-width
+        table.table
+          thead
+            tr
+              th.text-center #
+              th Наименование
+              th Опубликован
+              th.text-right Действия
+          tbody
+            each review, index in reviews
+              tr
+                td.text-center #{index + 1}
+                td #{review.name}
+                td
+                  .form-check
+                    label.form-check-label
+                      if review.visible === 'true'
+                        input#checkboxSentAjax.form-check-input(type='checkbox' checked)
+                      else
+                        input#checkboxSentAjax.form-check-input(type='checkbox')
+                      span.form-check-sign
+                      pre(data-url=`/admin/review/add/${review._id}` data-prop='visible' style='display: none;')
+                td.td-actions.text-right
+                  //- a.btn.btn-info.btn-link.btn-xs(href='#', rel='tooltip', title='View Profile')
+                  //-   i.fa.fa-user
+                  a.btn.btn-success.btn-link.btn-xs(href=`/admin/review/add/${review._id}`, rel='tooltip', title='Редактировать')
+                    i.fa.fa-edit
+                  a.btn.btn-danger.btn-link.btn-xs(href=`/admin/review/delete/${review._id}`, rel='tooltip', title='Удалить')
+                    i.fa.fa-times
+        if pages > 1
+          +pagination('main-slider', page, pages, count)

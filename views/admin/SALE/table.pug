@@ -1,0 +1,14 @@
+extends ../layout
+include ./mixins/_table
+//- include ./mixins/_filter
+
+block content
+  .content
+    .container-fluid
+      .row
+        .col-md-12
+          a.btn.btn-fill.btn-info(href='/admin/sale/add')
+            i.fa.fa-plus
+            | Добавить акицю
+          //- +filter(categories)
+          +table(sales)

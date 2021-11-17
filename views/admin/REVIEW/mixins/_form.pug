@@ -1,0 +1,28 @@
+mixin form(review = {})
+  .card.stacked-form
+    .card-header
+      if !review._id
+        h4.card-title Создание отзыва
+      else
+        h4.card-title Редактирование отзыва
+    .card-body
+      form(method='POST', action=`/admin/review/add/${review._id || ''}`)
+        .form-group
+          label Имя
+          input.form-control(type='text', name='name' value=review.name placeholder='Имя' required)
+        .form-group
+          label Текст
+          input.form-control(type='text', name='text' value=review.text placeholder='Текст' required)
+        .form-group
+          .form-check
+            label.form-check-label
+              if review.visible === 'true' || !review._id
+                input#inp.form-check-input(type='checkbox' checked)
+              if review.visible === 'false'
+                input#inp.form-check-input(type='checkbox')
+              span.form-check-sign
+              | Опубликован
+              input#hidden(type='hidden' name='visible' value=review.visible || 'true')
+        button.btn.btn-fill.btn-info(type='submit' value='false')
+          | #{review._id ? 'Редактировать' : 'Создать'}
+          i.fa.fa-check
